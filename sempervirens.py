@@ -1,4 +1,4 @@
-# This file is part of the Open Telemetry Project
+# This file is part of sempervirens
 # Copyright (C) 2015 Nathaniel Smith <njs@pobox.com>
 # See file LICENSE.txt for license information.
 
@@ -12,9 +12,9 @@ from collections import defaultdict
 import appdirs
 import requests
 
-DIRECTORY_NAME = "open-telemetry-project"
+DIRECTORY_NAME = "sempervirens"
 
-DISABLE_ENVVAR = "OTP_DISABLE"
+DISABLE_ENVVAR = "SV_DISABLE"
 
 # Cross-platform directory nonsense:
 # One version (has all-versions wheel on pypi):
@@ -39,7 +39,7 @@ DISABLE_ENVVAR = "OTP_DISABLE"
 # Maybe we can live with an envvar for global disablement at least for now.
 
 # DATA_DIR is something like
-#   ~/.local/share/open-telemetry-project/
+#   ~/.local/share/sempervirens/
 #
 # It contains:
 #   /consent
@@ -49,15 +49,15 @@ DISABLE_ENVVAR = "OTP_DISABLE"
 #   /install-id
 #     16 bytes
 #     this should permissions 0600
-#   /otp-python/   -- ours to play with
+#   /sempervirens-python/   -- ours to play with
 
 class OTP(object):
     def __init__(self):
         self.enabled = False
-        # The main OTP directory, e.g. ~/.local/share/open-telemetry-project
-        self.otp_path = None
+        # The main SV directory, e.g. ~/.local/share/sempervirens
+        self.sempervirens_path = None
         # The directory we use for storing things, e.g.
-        #    ~/.local/share/open-telemetry-project/otp-python/$HOSTNAME/
+        #    ~/.local/share/sempervirens/sempervirens-python/$HOSTNAME/
         self.data_path = None
 
         # {project_id:
@@ -83,8 +83,8 @@ class OTP(object):
         # if we do not own directory, then bail out
         XX
 
-        self.otp_python_dir = os.path.join(self.otp_dir,
-                                           "otp-python",
+        self.otp_python_dir = os.path.join(self.sempervirens_dir,
+                                           "sempervirens-python",
                                            socket.gethostname())
 
 
