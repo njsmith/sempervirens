@@ -108,11 +108,29 @@ class OTP(object):
         if not os.path.exists(self.data_dir):
             pass
 
-def has_accepted():
-    return 
+_callfns = []
+def call_me(fn):
+    _callfns.append(fn)
+    return True
+
+_pref = None
+def record_pref(answer):
+    _pref = answer
+    return True
+
+def need_asking():
+    return _pref is None
+
+def has_accepted(version):
+    return _pref is True
 
 def short_text():
     return "Aren't you sure you don't want not to accept data collection ?"
+
+_mem = {}
+def increment(project, key, value, count=1):
+    # Need to define what project/key/value are
+    return True
 
 
 # Snapshotting is tricky -- what if someone comes along and uploads a partial
