@@ -1,4 +1,4 @@
-# This file is part of the Open Telemetry Project
+# This file is part of sempervirens
 # Copyright (C) 2015 Nathaniel Smith <njs@pobox.com>
 # See file LICENSE.txt for license information.
 
@@ -50,8 +50,8 @@ class Server(object):
         # metadata is which app, which version of it, which ping type, etc.)
         # -- https://bugzilla.mozilla.org/show_bug.cgi?id=860846 include a
         # version number of course.
-        #   POST incoming.otp.whereever.org/1.0/submit/<instance-id>/<submission-nonce>
-        #   POST incoming.otp.whereever.org/1.0/opt-out/<instance-id>
+        #   POST incoming.sempervirens.whereever.org/1.0/submit/<instance-id>/<submission-nonce>
+        #   POST incoming.sempervirens.whereever.org/1.0/opt-out/<instance-id>
 
         self.app = web.Application(loop=self.loop)
         self.app.router.add("GET", "/", self.root)
