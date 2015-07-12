@@ -9,7 +9,7 @@ import json
 import threading
 from collections import defaultdict
 
-import appdirs
+# import appdirs
 import requests
 
 DIRECTORY_NAME = "sempervirens"
@@ -98,6 +98,7 @@ class OTP(object):
         XX
 
     def record_consent(self, version, consented):
+        pass
 
 
     def _ensure_directory(self):
@@ -105,7 +106,13 @@ class OTP(object):
             return
 
         if not os.path.exists(self.data_dir):
+            pass
 
+def has_accepted():
+    return 
+
+def short_text():
+    return "Aren't you sure you don't want not to accept data collection ?"
 
 
 # Snapshotting is tricky -- what if someone comes along and uploads a partial
