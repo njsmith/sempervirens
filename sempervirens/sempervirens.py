@@ -119,16 +119,10 @@ def record_pref(answer):
     return True
 
 def need_asking():
-    if _pref == None:
-	return True
-    else:
-	return False
+    return _pref is None
 
 def has_accepted(version):
-    if _pref == True:
-	return True
-    else:
-	return False
+    return _pref is True
 
 def short_text():
     return "Aren't you sure you don't want not to accept data collection ?"
